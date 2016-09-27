@@ -94,10 +94,11 @@ getError(TrainingOutput, Output) ->
 	TrainingOutput - Output.
 
 getAdjustedSynapticWeight([SynapticWeight1, SynapticWeight2, SynapticWeight3, SynapticWeight4], [TrainingInput1,TrainingInput2, TrainingInput3, TrainingInput4], Error, Output) ->
-	Adjustment1 = TrainingInput1 * (Error * getSigmoidDerivative(Output)),
-	Adjustment2 = TrainingInput2 * (Error * getSigmoidDerivative(Output)),
-	Adjustment3 = TrainingInput3 * (Error * getSigmoidDerivative(Output)),
-	Adjustment4 = TrainingInput4 * (Error * getSigmoidDerivative(Output)),
+	SigmoidDerivativeOfOutput = getSigmoidDerivative(Output),
+	Adjustment1 = TrainingInput1 * (Error * SigmoidDerivativeOfOutput),
+	Adjustment2 = TrainingInput2 * (Error * SigmoidDerivativeOfOutput),
+	Adjustment3 = TrainingInput3 * (Error * SigmoidDerivativeOfOutput),
+	Adjustment4 = TrainingInput4 * (Error * SigmoidDerivativeOfOutput),
 	[SynapticWeight1 + Adjustment1, SynapticWeight2 + Adjustment2, SynapticWeight3 + Adjustment3, SynapticWeight4 + Adjustment4].
 	
 %The sigmoid function which describes an S shaped curve
