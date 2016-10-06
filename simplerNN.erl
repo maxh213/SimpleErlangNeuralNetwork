@@ -46,7 +46,7 @@ trainWeightsOnSet([TI|TIs], [TO|TOs], SynapticWeights) ->
 %This is going to output some outputs for the inputs which will be compared with
 %the training set outputs later
 think([TrainingInput1,TrainingInput2], [SynapticWeight1, SynapticWeight2]) ->
-	Sum = (TrainingInput1 * SynapticWeight1) + (TrainingInput2 + SynapticWeight2),
+	Sum = (TrainingInput1 * SynapticWeight1) + (TrainingInput2 * SynapticWeight2),
 	getSigmoid(Sum).
 
 getError(TrainingOutput, Output) ->
